@@ -6,6 +6,9 @@ https://www.asapp.com/
 
 ---------------------------------------------
 
+TODOS:
+- ADD proptypes...
+
 ## Overview
 Chat Asapp is an exciting place where you get to have a conversation with the most important person you know! (yourself)
 

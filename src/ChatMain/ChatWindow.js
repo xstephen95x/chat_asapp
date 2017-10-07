@@ -17,7 +17,7 @@ class ChatWindow extends Component {
     return (
       <ChatWindowWrapper>
         <MessageView messages={["foo", "bar"]} />
-        <TypeBox />
+        <TypeBox submitMessage={this.props.submitMessage} />
       </ChatWindowWrapper>
     );
   }

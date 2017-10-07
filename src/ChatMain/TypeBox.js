@@ -23,7 +23,8 @@ class TypeBox extends Component {
     if (e.charCode == 13) {
       e.preventDefault();
       e.stopPropagation();
-      console.log("ENTER");
+
+      // this.props.submitMessage()
     }
   };
 }

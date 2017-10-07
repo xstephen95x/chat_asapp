@@ -14,7 +14,7 @@ class ChatWindows extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      messages: ["foo", "bar"]
+      messages: []
     };
   }
 
