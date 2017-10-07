@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { CubeGrid } from "better-react-spinkit";
 
+// Displays a loading spinner, full view
 const Loading = ({}) => {
   return (
     <SpinContainer>
@@ -15,7 +16,7 @@ const Loading = ({}) => {
 export default Loading;
 
 const SpinContainer = styled.div`
-  background: rgba(50, 50, 50, 0.8);
+  background: rgba(50, 50, 50, 0.5);
   position: absolute;
   width: 100%;
   height: 100%;

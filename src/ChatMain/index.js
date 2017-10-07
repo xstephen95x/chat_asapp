@@ -2,6 +2,7 @@
   - For ASAPP coding challenge,  October 2017
 */
 import React, { Component } from "react";
+import styled from "styled-components";
 import firebase from "firebase";
 
 import Login from "Login";
@@ -25,8 +26,7 @@ class ChatMain extends Component {
 
   render() {
     if (this.state.auth) {
-      return <Loading />;
-      // return this.renderChatMain();
+      return this.renderChatMain();
     } else if (this.state.auth === null) {
       return <Loading />;
     } else {
@@ -36,13 +36,13 @@ class ChatMain extends Component {
 
   renderChatMain = () => {
     return (
-      <div>
+      <Wrapper>
         <Header history={this.props.history} />
         <Switch>
           <Redirect exact path="/" to="/chat" />
           <Route path="/chat" component={ChatWindows} />
         </Switch>
-      </div>
+      </Wrapper>
     );
   };
 
@@ -58,3 +58,9 @@ class ChatMain extends Component {
 }
 
 export default ChatMain;
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+`;
