@@ -8,7 +8,7 @@ import Login from "Login";
 
 import { Switch, Route, Redirect } from "react-router-dom";
 
-class PortalMain extends Component {
+class ChatWindows extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,6 +17,8 @@ class PortalMain extends Component {
   }
 
   render() {
+    return null;
   }
+}
 
 export default ChatWindows;

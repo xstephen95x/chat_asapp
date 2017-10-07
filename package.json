@@ -2,7 +2,18 @@
   "name": "chat-asapp",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://portal.arcreatr.com/",
+  "author": "Stephen White <stwhite@mit.edu>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/xstephen95x/chat_asapp"
+  },
+  "engines": {
+    "npm": ">=3",
+    "node": ">=5"
+  },
   "dependencies": {
+    "better-react-spinkit": "^2.0.2",
     "firebase": "^4.5.0",
     "muicss": "^0.9.27",
     "react": "^16.0.0",
@@ -21,5 +32,15 @@
     "enzyme": "^3.1.0",
     "jest": "^21.2.1",
     "prettier": "^1.7.4"
+  },
+  "jest": {
+    "moduleDirectories": [
+      "src"
+    ],
+    "moduleNameMapper": {
+      ".*\\.(css|less|styl|scss|sass)$": "<rootDir>/__mocks__/cssModule.js",
+      ".*\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/image.js"
+    },
+    "testRegex": "tests/.*\\.test\\.js$"
   }
 }

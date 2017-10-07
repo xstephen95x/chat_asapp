@@ -5,10 +5,13 @@ import React, { Component } from "react";
 import firebase from "firebase";
 
 import Login from "Login";
+import Header from "Header";
+import ChatWindows from "ChatMain/ChatWindows";
+import Loading from "Login/Loading";
 
 import { Switch, Route, Redirect } from "react-router-dom";
 
-class PortalMain extends Component {
+class ChatMain extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,13 +24,13 @@ class PortalMain extends Component {
   }
 
   render() {
-    if (!this.state.auth) {
-      return <LogIn />;
-    } else if (!firebase.auth().currentUser.emailVerified) {
-      return <Verify />;
-      //TODO: display a 'resend email' button
+    if (this.state.auth) {
+      return <Loading />;
+      // return this.renderChatMain();
+    } else if (this.state.auth === null) {
+      return <Loading />;
     } else {
-      return this.renderChatMain();
+      return <Login />;
     }
   }
 
@@ -36,8 +39,8 @@ class PortalMain extends Component {
       <div>
         <Header history={this.props.history} />
         <Switch>
-          <Redirect exact path="/" to="/list" />
-          <Route path="/list" component={ListView} />
+          <Redirect exact path="/" to="/chat" />
+          <Route path="/chat" component={ChatWindows} />
         </Switch>
       </div>
     );

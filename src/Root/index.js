@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import firebase from "firebase";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import "./mui.min.css"; //bind MUICSS styles rather than use CDN
+import "./mui.css"; //bind MUICSS styles rather than use CDN
 import "global_styles";
 
 import ChatMain from "ChatMain";
