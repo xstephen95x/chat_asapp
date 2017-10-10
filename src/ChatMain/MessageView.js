@@ -58,6 +58,7 @@ class MessageView extends Component {
 
 export default MessageView;
 
+//TODO: FIx height offset issue
 const MessageViewWrapper = styled.div`
   overflow: scroll;
   position: relative;

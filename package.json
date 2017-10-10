@@ -14,6 +14,8 @@
   },
   "dependencies": {
     "better-react-spinkit": "^2.0.2",
+    "cleverbot-node": "^0.3.11",
+    "cleverbot.io": "^1.0.4",
     "firebase": "^4.5.0",
     "muicss": "^0.9.27",
     "react": "^16.0.0",

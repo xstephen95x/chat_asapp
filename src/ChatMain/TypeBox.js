@@ -7,6 +7,8 @@ import firebase from "firebase";
 
 import Send from "./send.svg";
 
+//TODO: Manually focus textboxs
+
 class TypeBox extends Component {
   constructor(props) {
     super(props);

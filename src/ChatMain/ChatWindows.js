@@ -10,6 +10,9 @@ import ChatWindow from "ChatMain/ChatWindow";
 
 import { Switch, Route, Redirect } from "react-router-dom";
 
+const API_USER = "sRK9LaQvtR0kMWoO";
+const API_KEY = "jKiBKFAcqoCfigyNiMGq36KntyoWF2rH";
+
 class ChatWindows extends Component {
   constructor(props) {
     super(props);
@@ -42,7 +45,6 @@ class ChatWindows extends Component {
   }
 
   toggleTyping = (isLeft, val) => {
-    console.log(val);
     if (isLeft) {
       this.setState({ leftIsTyping: val });
     } else {
@@ -59,6 +61,17 @@ class ChatWindows extends Component {
     };
     messages.push(newMessage);
     this.setState({ messages });
+    this.callCleverbot();
+  };
+
+  callCleverbot = () => {
+    console.log("calling cb");
+    let cb = new window.cleverbot(API_USER, API_KEY);
+    console.log(cb);
+    cb.ask("is this thing on?", (err, res) => {
+      console.log("-----------------");
+      console.log(err, res);
+    });
   };
 }
 

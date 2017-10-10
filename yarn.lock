@@ -1442,6 +1442,16 @@ clean-css@4.1.x:
   dependencies:
     source-map "0.5.x"
 
+cleverbot-node@^0.3.11:
+  version "0.3.11"
+  resolved "https://registry.yarnpkg.com/cleverbot-node/-/cleverbot-node-0.3.11.tgz#7c692115949cad2b4b5cf1fd72985a1cdaf52d3f"
+
+cleverbot.io@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/cleverbot.io/-/cleverbot.io-1.0.4.tgz#8064862cb1f09bf7977d13b4b67b0b90e82f40af"
+  dependencies:
+    request "^2.53.0"
+
 cli-boxes@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/cli-boxes/-/cli-boxes-1.0.0.tgz#4fa917c3e59c94a004cd61f8ee509da651687143"
@@ -6071,7 +6081,7 @@ request@2.81.0:
     tunnel-agent "^0.6.0"
     uuid "^3.0.0"
 
-request@^2.79.0:
+request@^2.53.0, request@^2.79.0:
   version "2.83.0"
   resolved "https://registry.yarnpkg.com/request/-/request-2.83.0.tgz#ca0b65da02ed62935887808e6f510381034e3356"
   dependencies:
