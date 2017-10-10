@@ -3,36 +3,53 @@
 */
 import React, { Component } from "react";
 import styled from "styled-components";
+import ReactDOM from "react-dom";
 import firebase from "firebase";
 
 import TypingAnimation from "ChatMain/TypingAnimation";
+import ChatBubble from "ChatMain/ChatBubble";
 
 class MessageView extends Component {
   constructor(props) {
     super(props);
   }
 
+  componentDidUpdate() {
+    this.scrollToBottom();
+  }
+
   render() {
     return (
-      <MessageViewWrapper>
-        <Overflow>{this.renderMessages(this.props.messages)}</Overflow>
+      <div style={{ position: "relative", width: "100%", height: "100%" }}>
+        <MessageViewWrapper ref={elm => (this.container = elm)}>
+          <Overflow>{this.renderMessages(this.props.messages)}</Overflow>
+        </MessageViewWrapper>
         {this.props.isTyping && <TypingAnimation />}
-      </MessageViewWrapper>
+      </div>
     );
   }
+
+  scrollToBottom = () => {
+    const node = ReactDOM.findDOMNode(this.container);
+    node.scrollTop = node.scrollHeight;
+  };
+
   renderMessages = messages => {
     return messages.map((message, i) => {
       let key = `${this.props.isLeft ? "l" : "r"}-cr-${i}`;
+      let fromSender = false;
       let className = "left";
       if (this.props.isLeft && message.from == "left") {
+        fromSender = true;
         className = "";
       }
       if (!this.props.isLeft && message.from == "right") {
+        fromSender = true;
         className = "";
       }
       return (
         <ChatRow key={key} className={className}>
-          <ChatBubble className={className}>{message.text}</ChatBubble>
+          <ChatBubble fromSender={fromSender} message={message.text} />
         </ChatRow>
       );
     });
@@ -45,17 +62,16 @@ const MessageViewWrapper = styled.div`
   overflow: scroll;
   position: relative;
   width: 100%;
-  height: 500px;
-  ${"" /* height: calc(100% - 80px); */} bottom: 100px;
+  height: calc(100% - 130px);
+  bottom: 100px;
   top: 0;
-  border: 2px solid blue;
 `;
 const Overflow = styled.div`
   width: 100%;
   position: absolute;
-  padding-bottom: 50px;
+  max-height: calc(100% - 80px);
   bottom: 0;
-  border: 1px solid green;
+  right: 0;
 `;
 const ChatRow = styled.div`
   display: flex;
@@ -66,18 +82,5 @@ const ChatRow = styled.div`
   height: auto;
   &.left {
     justify-content: flex-start;
-  }
-`;
-const ChatBubble = styled.div`
-  position: relative;
-  padding: 8px;
-  margin: 5px;
-  min-width: 50px;
-  max-width: 50%;
-  overflow-wrap: normal;
-  border-radius: 10px;
-  background: rgba(0, 249, 224, 0.7);
-  &.left {
-    background: rgba(126, 138, 137, 0.5);
   }
 `;

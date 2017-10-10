@@ -34,10 +34,10 @@ class TypeBox extends Component {
     let buffer = e.target.value;
     if (this.state.buffer.length === 0) {
       // began as blank
-      this.props.toggleTyping();
+      this.props.toggleTyping(true);
     } else if (buffer.length === 0) {
       // is now blank
-      this.props.toggleTyping();
+      this.props.toggleTyping(false);
     }
     this.setState({ buffer });
   };
@@ -60,7 +60,7 @@ class TypeBox extends Component {
     }
     this.props.submitMessage(this.state.buffer, from, to);
     this.setState({ buffer: "" });
-    this.props.toggleTyping();
+    this.props.toggleTyping(false);
   };
 }
 

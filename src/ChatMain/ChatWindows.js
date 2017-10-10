@@ -28,24 +28,25 @@ class ChatWindows extends Component {
           submitMessage={this.submitMessage}
           isLeft={true}
           isTyping={this.state.rightIsTyping}
-          toggleTyping={() => this.toggleTyping(true)}
+          toggleTyping={val => this.toggleTyping(true, val)}
         />
         <ChatWindow
           messages={this.state.messages}
           submitMessage={this.submitMessage}
           isLeft={false}
           isTyping={this.state.leftIsTyping}
-          toggleTyping={() => this.toggleTyping(false)}
+          toggleTyping={val => this.toggleTyping(false, val)}
         />
       </WindowsWrapper>
     );
   }
 
-  toggleTyping = isLeft => {
+  toggleTyping = (isLeft, val) => {
+    console.log(val);
     if (isLeft) {
-      this.setState({ leftIsTyping: !this.state.leftIsTyping });
+      this.setState({ leftIsTyping: val });
     } else {
-      this.setState({ rightIsTyping: !this.state.rightIsTyping });
+      this.setState({ rightIsTyping: val });
     }
   };
 

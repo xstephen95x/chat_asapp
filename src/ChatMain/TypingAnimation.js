@@ -23,10 +23,8 @@ const AnimationBubble = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  position: absolute;
   width: 100px;
   height: 36px;
-  bottom: 0px;
   margin: 0 auto;
   border-radius: 10px;
   margin-left: 5px;
