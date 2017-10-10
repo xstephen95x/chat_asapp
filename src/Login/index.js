@@ -7,7 +7,6 @@ import EmailForm from "./EmailForm";
 
 import G from "./google.svg";
 import Mark from "./github.png";
-import FB from "./fb.png";
 
 export default class Login extends Component {
   constructor(props) {
@@ -53,6 +52,7 @@ export default class Login extends Component {
     });
   };
 }
+
 const Icon = styled.img`
   height: 50px;
   width: 50px;

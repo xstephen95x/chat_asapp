@@ -1,9 +1,8 @@
 /* Written by Stephen L. White, stwhite@mit.edu
   - For ASAPP coding challenge,  October 2017
 */
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
-import firebase from "firebase";
 
 import TypeBox from "ChatMain/TypeBox";
 import MessageView from "ChatMain/MessageView";

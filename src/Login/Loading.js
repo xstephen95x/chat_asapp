@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 import { CubeGrid } from "better-react-spinkit";
 
 // Displays a loading spinner, full view
-const Loading = ({}) => {
+const Loading = () => {
   return (
     <SpinContainer>
       <Spinner>

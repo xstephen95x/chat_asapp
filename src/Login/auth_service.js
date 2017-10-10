@@ -17,7 +17,7 @@ export const handleSocialAuth = (e, provider) => {
   return new Promise((resolve, reject) => {
     firebase
       .auth()
-      .signInWithRedirect(providers[provider])
+      .signInWithPopup(providers[provider])
       .then(result => {
         importUser(result.user);
         resolve(false);
@@ -82,7 +82,6 @@ export const setDisplayName = displayName => {
     .database()
     .ref(`users/${firebase.auth().currentUser.uid}`)
     .transaction(data => {
-      console.log("setting dn", data);
       if (!data) data = {};
       data.display_name = displayName;
       return data;
@@ -99,7 +98,6 @@ export const makeNewUser = user => {
     .database()
     .ref(`users/${user.uid}`)
     .transaction(data => {
-      console.log("setting new user", user.uid);
       return newUser;
     });
 };

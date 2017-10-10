@@ -5,10 +5,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import firebase from "firebase";
 
-import Login from "Login";
 import ChatWindow from "ChatMain/ChatWindow";
-
-import { Switch, Route, Redirect } from "react-router-dom";
 
 class ChatWindows extends Component {
   constructor(props) {
@@ -18,6 +15,10 @@ class ChatWindows extends Component {
       leftIsTyping: false,
       rightIsTyping: false
     };
+  }
+
+  componentDidMount() {
+    this.attachDBListener();
   }
 
   render() {
@@ -41,8 +42,20 @@ class ChatWindows extends Component {
     );
   }
 
+  attachDBListener = () => {
+    const dataPath = `chats/${firebase.auth().currentUser.uid}`;
+    firebase
+      .database()
+      .ref(dataPath)
+      .on("value", snapshot => {
+        let messages = snapshot.val();
+        if (messages && messages.length > this.state.messages.length) {
+          this.setState({ messages });
+        }
+      });
+  };
+
   toggleTyping = (isLeft, val) => {
-    console.log(val);
     if (isLeft) {
       this.setState({ leftIsTyping: val });
     } else {
@@ -59,6 +72,16 @@ class ChatWindows extends Component {
     };
     messages.push(newMessage);
     this.setState({ messages });
+    firebase
+      .database()
+      .ref(`chats/${firebase.auth().currentUser.uid}`)
+      .transaction(node => {
+        if (!node) {
+          node = [];
+        }
+        node.push(newMessage);
+        return node;
+      });
   };
 }
 

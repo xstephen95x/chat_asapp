@@ -3,7 +3,6 @@
 */
 import React, { Component } from "react";
 import styled from "styled-components";
-import firebase from "firebase";
 
 import Send from "./send.svg";
 
@@ -32,6 +31,7 @@ class TypeBox extends Component {
 
   handleTextChange = e => {
     let buffer = e.target.value;
+    buffer = this.handleTextFormatting(buffer);
     if (this.state.buffer.length === 0) {
       // began as blank
       this.props.toggleTyping(true);
@@ -42,8 +42,22 @@ class TypeBox extends Component {
     this.setState({ buffer });
   };
 
+  handleTextFormatting = text => {
+    let offset = text.length - 1;
+    let lastChars = text[offset - 1] + text[offset];
+
+    if (lastChars === ":)") {
+      text = text.slice(0, offset - 1).concat("😀");
+    } else if (lastChars === ":(") {
+      text = text.slice(0, offset - 1).concat("😢");
+    } else if (lastChars === "<3") {
+      text = text.slice(0, offset - 1).concat("❤️");
+    }
+    return text;
+  };
+
   detectEnter = e => {
-    if (e.charCode == 13) {
+    if (e.charCode === 13) {
       // ENTER key
       e.preventDefault();
       e.stopPropagation();

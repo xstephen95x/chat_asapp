@@ -4,16 +4,11 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import ReactDOM from "react-dom";
-import firebase from "firebase";
 
 import TypingAnimation from "ChatMain/TypingAnimation";
 import ChatBubble from "ChatMain/ChatBubble";
 
 class MessageView extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidUpdate() {
     this.scrollToBottom();
   }
@@ -39,11 +34,11 @@ class MessageView extends Component {
       let key = `${this.props.isLeft ? "l" : "r"}-cr-${i}`;
       let fromSender = false;
       let className = "left";
-      if (this.props.isLeft && message.from == "left") {
+      if (this.props.isLeft && message.from === "left") {
         fromSender = true;
         className = "";
       }
-      if (!this.props.isLeft && message.from == "right") {
+      if (!this.props.isLeft && message.from === "right") {
         fromSender = true;
         className = "";
       }

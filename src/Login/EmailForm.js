@@ -180,8 +180,6 @@ export default class EmailForm extends Component {
       this.setState({ alert: "Passwords do not match." });
     } else if (this.state.password.length < 6) {
       this.setState({ alert: "Password must be more than 6 characters" });
-
-      //TODO: FIXME: Check for uniqueness of display names.
     } else {
       Auth.createNewEmailUser(
         this.state.email,

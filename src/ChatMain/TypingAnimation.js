@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 import { ThreeBounce } from "better-react-spinkit";
 
-const TypingAnimation = ({}) => {
+const TypingAnimation = () => {
   return (
     <AnimationBubble>
       <AnimationWrapper>
@@ -18,7 +18,6 @@ const AnimationWrapper = styled.div`
   padding: 8px;
   position: relative;
 `;
-
 const AnimationBubble = styled.div`
   display: flex;
   flex-direction: row;

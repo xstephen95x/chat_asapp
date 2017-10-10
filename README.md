@@ -1,7 +1,7 @@
 # Chat Asapp
 > By Stephen White <stwhite@mit.edu>
 
- url-to-app
+https://chat-asapp-43a5e.firebaseapp.com/chat
 
 ---------------------------------------------
 
@@ -27,11 +27,17 @@ Since you log in at the beginning of the experience, your entire chat history wi
 - Sign in is managed by Auth0, through Firebase.
   - I decided to use existing technologies rather than re-invent the wheel here. I consider user-creation a "front-end" task given all the libraries that handle doing this without a server now.
 - rather than chatting with other users, accounts are used to record and persist your own chat histories. This is keep the app in line with the spec of having 2 chat windows on the same screen which interact with each other.
-- TODO? Anon?
 
+#### Formatted Text
+- currently only basic features included:
+  - `":)"` => 😀
+  - `":("` => 😢
+  - `"<3"` => ❤️
 
 #### Persistent Data
+- All messages are saved.
 - Data storage is handled by Firebase directly from the React-app on the client-side.
+- Data is stored in my personal Firebase console.
 
 #### Styling / CSS
 - In lieu of crammed CSS style sheets, I use `styled-components` to contain all styles inside of their corresponding JS files. This keeps all the things you want and need in the same file.
@@ -48,8 +54,14 @@ Routing is implemented on the client-side with `react-router-dom`. There is curr
 To run the app locally:
 
 1. Clone the repo
-2. from inside the repo, run: `yarn` to install all dependencies and node modules
-3. run : `npm run start` to launch a dev server
+2. from inside the repo, run: `$ yarn` to install all dependencies and node modules
+3. run : `$ npm run start` to launch a dev server
+
+## Deployment to Staging:
+NOTE: You must have proper Firebase credentials to deploy.
+
+To deploy, simply run:
+  - `$ firebase deploy -m "message"`
 
 ------------------------------------------------
 ## Original Spec
