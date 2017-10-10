@@ -58,7 +58,6 @@ export default MessageView;
 
 const MessageViewWrapper = styled.div`
   overflow: scroll;
-  border: 1px solid black;
   position: relative;
   width: 100%;
   height: calc(100% - 62px);

@@ -5,30 +5,18 @@
  */
 const firebase = jest.genMockFromModule("firebase");
 
-let data = { auth: {}, objects: {} };
+let data = { auth: {}, chats: {} };
 
 const setMock = mocks => {
   data = mocks;
-  return new Promise(function(resolve, reject) {
-    setTimeout(() => {
-      resolve(true);
-    }, 1000);
-  });
 };
+
 const database = () => {
   return {
     ref: path => {
       return {
         once: (type, cb) => {
           let snapshot = {};
-          if (path === "users/user1/objects") {
-            //ListView.test.js
-            snapshot.val = () => data.objects;
-          } else if (path === "objects/obj1") {
-            snapshot.val = () => data.object1;
-          } else if (path === "objects/obj2") {
-            snapshot.val = () => data.object2;
-          }
           if (cb) {
             // synchronous
             return cb(snapshot);
@@ -40,7 +28,7 @@ const database = () => {
           }
         },
         on: (type, cb) => {
-          let snapshot = {};
+          let snapshot = { val: () => data.chats };
           return cb(snapshot);
         },
         transaction: cb => {
@@ -58,29 +46,9 @@ const auth = () => {
   };
 };
 
-const storage = () => {
-  return {
-    ref: {
-      child: {
-        put: () => {
-          return {
-            on: (change, update, err, done) => {
-              snapshot = { bytesTransferred: 0, totalBytes: 100 };
-              update(snapshot);
-              err();
-              done();
-            }
-          };
-        }
-      }
-    }
-  };
-};
-
 firebase.setMock = setMock;
 
 firebase.auth = auth;
 firebase.database = database;
-firebase.storage = storage;
 
 export default firebase;

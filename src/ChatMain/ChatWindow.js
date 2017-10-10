@@ -28,7 +28,7 @@ const ChatWindow = ({
 
 export default ChatWindow;
 
-const ChatWindowWrapper = styled.div`
+export const ChatWindowWrapper = styled.div`
   position: relative;
   border: 1px solid grey;
   width: 100%;

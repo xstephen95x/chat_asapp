@@ -13,13 +13,13 @@ class ChatBubble extends Component {
 
 export default ChatBubble;
 
-const ChatBubbleWrapper = styled.div`
+export const ChatBubbleWrapper = styled.div`
   position: relative;
   padding: 8px;
   margin: 5px;
   min-width: 50px;
   max-width: 50%;
-  overflow-wrap: normal;
+  overflow-wrap: break-word;
   border-radius: 10px;
   background: rgba(0, 249, 224, 0.7);
   &.left {

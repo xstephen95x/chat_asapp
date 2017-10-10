@@ -10,8 +10,6 @@ https://www.asapp.com/
 
 TODOS:
 - ADD proptypes...
-- tab between textboxs
--
 
 ## Overview
 Chat Asapp is an exciting place where you get to have a conversation with the most important person you know! (yourself)
@@ -51,13 +49,26 @@ Routing is implemented on the client-side with `react-router-dom`. There is curr
 ------------------------------------------------
 ## Development
 
+#### Local Serving
 To run the app locally:
 
 1. Clone the repo
 2. from inside the repo, run: `$ yarn` to install all dependencies and node modules
 3. run : `$ npm run start` to launch a dev server
 
-## Deployment to Staging:
+
+#### Testing
+Testing is done with the Jest test framework.
+To run all tests, simply run:
+- `$ jest`
+
+For rendering of React Components to the test runner, the Enzyme library is used.
+
+For more, see:
+- https://facebook.github.io/jest/
+
+
+#### Deployment to Staging:
 NOTE: You must have proper Firebase credentials to deploy.
 
 To deploy, simply run:

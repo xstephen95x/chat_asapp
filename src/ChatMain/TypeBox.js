@@ -66,21 +66,23 @@ class TypeBox extends Component {
   };
 
   sendMessage = () => {
-    let to = "left";
-    let from = "right";
-    if (this.props.isLeft) {
-      to = "right";
-      from = "left";
+    if (this.state.buffer.length > 0) {
+      let to = "left";
+      let from = "right";
+      if (this.props.isLeft) {
+        to = "right";
+        from = "left";
+      }
+      this.props.submitMessage(this.state.buffer, from, to);
+      this.setState({ buffer: "" });
+      this.props.toggleTyping(false);
     }
-    this.props.submitMessage(this.state.buffer, from, to);
-    this.setState({ buffer: "" });
-    this.props.toggleTyping(false);
   };
 }
 
 export default TypeBox;
 
-const Icon = styled.img`
+export const Icon = styled.img`
   position: absolute;
   width: 50px;
   height: 50px;
@@ -92,7 +94,7 @@ const Icon = styled.img`
     transform: scale(1.08);
   }
 `;
-const Input = styled.textarea`
+export const Input = styled.textarea`
   border: 0px;
   word-wrap: break-word;
   overflow: hidden;
