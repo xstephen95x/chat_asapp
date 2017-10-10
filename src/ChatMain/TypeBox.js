@@ -5,45 +5,95 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import firebase from "firebase";
 
+import Send from "./send.svg";
+
 class TypeBox extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      buffer: ""
+    };
   }
 
   render() {
     return (
       <TypeBoxWrapper>
-        <form>
-          <Input onKeyPress={this.detectEnter} />
-        </form>
+        <Form>
+          <Input
+            value={this.state.buffer}
+            onChange={this.handleTextChange}
+            onKeyPress={this.detectEnter}
+          />
+        </Form>
+        <Icon src={Send} onClick={this.sendMessage} />
       </TypeBoxWrapper>
     );
   }
+
+  handleTextChange = e => {
+    let buffer = e.target.value;
+    this.setState({ buffer });
+  };
+
   detectEnter = e => {
     if (e.charCode == 13) {
+      // ENTER key
       e.preventDefault();
       e.stopPropagation();
-
-      // this.props.submitMessage()
+      this.sendMessage();
     }
+  };
+
+  sendMessage = () => {
+    let to = "left";
+    let from = "right";
+    if (this.props.isLeft) {
+      to = "right";
+      from = "left";
+    }
+    this.props.submitMessage(this.state.buffer, from, to);
+    this.setState({ buffer: "" });
   };
 }
 
 export default TypeBox;
 
+const Icon = styled.img`
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  right: 0;
+  top: 5px;
+  cursor: pointer;
+  transition: all 150ms ease-in-out;
+  &:hover {
+    transform: scale(1.08);
+  }
+`;
 const Input = styled.textarea`
+  border: 0px;
   word-wrap: break-word;
-  display: inline-block;
   overflow: hidden;
   font-size: 22px;
-  background-color: #f0f0f0;
-  width: 90%;
-  height: auto;
+  width: calc(100% - 50px);
+  height: 55px;
+  background: #eceded;
+  transition: all 150ms ease-in-out;
+  &:focus {
+    box-shadow: inset 0px -27px 19px -11px rgba(51, 230, 221, 1);
+    outline: none;
+  }
 `;
 const TypeBoxWrapper = styled.div`
-  width: 50%;
-  height: 100px;
+  border-top: 1px solid grey;
+  width: 100%;
+  height: 60px;
   position: absolute;
   bottom: 0;
-  background: rgba(50, 50, 50, 0.8);
+  background: #eceded;
+`;
+
+const Form = styled.form`
+  height: 55px;
+  width: auto;
 `;

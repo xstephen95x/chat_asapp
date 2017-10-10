@@ -8,25 +8,20 @@ import firebase from "firebase";
 import TypeBox from "ChatMain/TypeBox";
 import MessageView from "ChatMain/MessageView";
 
-class ChatWindow extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <ChatWindowWrapper>
-        <MessageView messages={["foo", "bar"]} />
-        <TypeBox submitMessage={this.props.submitMessage} />
-      </ChatWindowWrapper>
-    );
-  }
-}
+const ChatWindow = ({ messages, submitMessage, isLeft }) => {
+  return (
+    <ChatWindowWrapper>
+      <MessageView messages={messages} isLeft={isLeft} />
+      <TypeBox submitMessage={submitMessage} isLeft={isLeft} />
+    </ChatWindowWrapper>
+  );
+};
 
 export default ChatWindow;
 
 const ChatWindowWrapper = styled.div`
-  border: 1px solid black;
-  width: 50%;
+  position: relative;
+  border: 1px solid grey;
+  width: 100%;
   height: 100%;
 `;

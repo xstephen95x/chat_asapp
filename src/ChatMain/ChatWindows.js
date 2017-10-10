@@ -35,14 +35,14 @@ class ChatWindows extends Component {
     );
   }
 
-  submitMessage = (message, from, to) => {
+  submitMessage = (text, from, to) => {
     let messages = this.state.messages;
     let newMessage = {
       from,
       to,
-      message
+      text
     };
-    messages.append(newMessage);
+    messages.push(newMessage);
     this.setState({ messages });
   };
 }
@@ -50,9 +50,9 @@ class ChatWindows extends Component {
 export default ChatWindows;
 
 const WindowsWrapper = styled.div`
+  position: absolute;
   display: flex;
   flex-direction: row;
-  position: absolute;
   width: 100%;
   height: auto;
   top: 60px;

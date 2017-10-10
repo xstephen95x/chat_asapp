@@ -1,13 +1,17 @@
 # Chat Asapp
 > By Stephen White <stwhite@mit.edu>
 
-Completed as part of the coding challenge for ASAPP.
-https://www.asapp.com/
+ url-to-app
 
 ---------------------------------------------
 
+Completed as part of the coding challenge for ASAPP.
+https://www.asapp.com/
+
 TODOS:
 - ADD proptypes...
+- tab between textboxs
+-
 
 ## Overview
 Chat Asapp is an exciting place where you get to have a conversation with the most important person you know! (yourself)
@@ -33,6 +37,12 @@ Since you log in at the beginning of the experience, your entire chat history wi
 - In lieu of crammed CSS style sheets, I use `styled-components` to contain all styles inside of their corresponding JS files. This keeps all the things you want and need in the same file.
   - [styled-components](https://github.com/styled-components/styled-components)
 
+#### Routing
+Routing is implemented on the client-side with `react-router-dom`. There is currently only one route,
+- `/chat` - render the chat windows
+
+
+----------------------------------------
 ## Development
 
 To run the app locally:
