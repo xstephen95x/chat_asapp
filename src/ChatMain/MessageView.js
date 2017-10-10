@@ -17,7 +17,10 @@ class MessageView extends Component {
     return (
       <div style={{ position: "relative", width: "100%", height: "100%" }}>
         <MessageViewWrapper ref={elm => (this.container = elm)}>
-          <Overflow>{this.renderMessages(this.props.messages)}</Overflow>
+          <Overflow>
+            {this.renderMessages(this.props.messages)}
+            <Spacer />
+          </Overflow>
         </MessageViewWrapper>
         {this.props.isTyping && <TypingAnimation />}
       </div>
@@ -55,11 +58,17 @@ export default MessageView;
 
 const MessageViewWrapper = styled.div`
   overflow: scroll;
+  border: 1px solid black;
   position: relative;
   width: 100%;
-  height: calc(100% - 130px);
+  height: calc(100% - 62px);
+  margin-bottom: 80px;
   bottom: 100px;
   top: 0;
+`;
+const Spacer = styled.div`
+  width: 100%;
+  height: 80px;
 `;
 const Overflow = styled.div`
   width: 100%;

@@ -19,12 +19,13 @@ const AnimationWrapper = styled.div`
   position: relative;
 `;
 const AnimationBubble = styled.div`
+  position: absolute;
+  bottom: 80px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   width: 100px;
   height: 36px;
-  margin: 0 auto;
   border-radius: 10px;
   margin-left: 5px;
   background: rgba(126, 138, 137, 0.5);
