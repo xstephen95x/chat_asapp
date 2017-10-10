@@ -14,7 +14,9 @@ class ChatWindows extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      messages: []
+      messages: [],
+      leftIsTyping: false,
+      rightIsTyping: false
     };
   }
 
@@ -25,15 +27,27 @@ class ChatWindows extends Component {
           messages={this.state.messages}
           submitMessage={this.submitMessage}
           isLeft={true}
+          isTyping={this.state.rightIsTyping}
+          toggleTyping={() => this.toggleTyping(true)}
         />
         <ChatWindow
           messages={this.state.messages}
           submitMessage={this.submitMessage}
           isLeft={false}
+          isTyping={this.state.leftIsTyping}
+          toggleTyping={() => this.toggleTyping(false)}
         />
       </WindowsWrapper>
     );
   }
+
+  toggleTyping = isLeft => {
+    if (isLeft) {
+      this.setState({ leftIsTyping: !this.state.leftIsTyping });
+    } else {
+      this.setState({ rightIsTyping: !this.state.rightIsTyping });
+    }
+  };
 
   submitMessage = (text, from, to) => {
     let messages = this.state.messages;

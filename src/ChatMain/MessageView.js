@@ -5,6 +5,8 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import firebase from "firebase";
 
+import TypingAnimation from "ChatMain/TypingAnimation";
+
 class MessageView extends Component {
   constructor(props) {
     super(props);
@@ -14,6 +16,7 @@ class MessageView extends Component {
     return (
       <MessageViewWrapper>
         <Overflow>{this.renderMessages(this.props.messages)}</Overflow>
+        {this.props.isTyping && <TypingAnimation />}
       </MessageViewWrapper>
     );
   }
@@ -49,6 +52,7 @@ const MessageViewWrapper = styled.div`
 const Overflow = styled.div`
   width: 100%;
   position: absolute;
+  padding-bottom: 50px;
   bottom: 0;
 `;
 const ChatRow = styled.div`

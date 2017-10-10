@@ -8,11 +8,21 @@ import firebase from "firebase";
 import TypeBox from "ChatMain/TypeBox";
 import MessageView from "ChatMain/MessageView";
 
-const ChatWindow = ({ messages, submitMessage, isLeft }) => {
+const ChatWindow = ({
+  messages,
+  submitMessage,
+  isLeft,
+  isTyping,
+  toggleTyping
+}) => {
   return (
     <ChatWindowWrapper>
-      <MessageView messages={messages} isLeft={isLeft} />
-      <TypeBox submitMessage={submitMessage} isLeft={isLeft} />
+      <MessageView messages={messages} isLeft={isLeft} isTyping={isTyping} />
+      <TypeBox
+        submitMessage={submitMessage}
+        isLeft={isLeft}
+        toggleTyping={toggleTyping}
+      />
     </ChatWindowWrapper>
   );
 };

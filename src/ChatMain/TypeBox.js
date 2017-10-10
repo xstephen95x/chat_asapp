@@ -32,6 +32,13 @@ class TypeBox extends Component {
 
   handleTextChange = e => {
     let buffer = e.target.value;
+    if (this.state.buffer.length === 0) {
+      // began as blank
+      this.props.toggleTyping();
+    } else if (buffer.length === 0) {
+      // is now blank
+      this.props.toggleTyping();
+    }
     this.setState({ buffer });
   };
 
