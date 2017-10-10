@@ -42,18 +42,20 @@ class MessageView extends Component {
 export default MessageView;
 
 const MessageViewWrapper = styled.div`
+  overflow: scroll;
   position: relative;
   width: 100%;
-  height: calc(100% - 80px);
-  bottom: 100px;
+  height: 500px;
+  ${"" /* height: calc(100% - 80px); */} bottom: 100px;
   top: 0;
-  overflow: scroll;
+  border: 2px solid blue;
 `;
 const Overflow = styled.div`
   width: 100%;
   position: absolute;
   padding-bottom: 50px;
   bottom: 0;
+  border: 1px solid green;
 `;
 const ChatRow = styled.div`
   display: flex;

@@ -60,6 +60,7 @@ class ChatMain extends Component {
 export default ChatMain;
 
 const Wrapper = styled.div`
+  overflow: hidden;
   display: flex;
   flex-direction: column;
 `;

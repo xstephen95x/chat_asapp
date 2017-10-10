@@ -42,7 +42,7 @@ Routing is implemented on the client-side with `react-router-dom`. There is curr
 - `/chat` - render the chat windows
 
 
-----------------------------------------
+------------------------------------------------
 ## Development
 
 To run the app locally:
@@ -51,7 +51,7 @@ To run the app locally:
 2. from inside the repo, run: `yarn` to install all dependencies and node modules
 3. run : `npm run start` to launch a dev server
 
----------------------------------
+------------------------------------------------
 ## Original Spec
 
 Your challenge is to build a split screen chat interface. In one browser tab, there should be two side-by-side chat windows. On the left is Laura's chat window and she's talking to Rob. On the right is Rob's chat window and he's talking to Laura.

@@ -60,6 +60,7 @@ class TypeBox extends Component {
     }
     this.props.submitMessage(this.state.buffer, from, to);
     this.setState({ buffer: "" });
+    this.props.toggleTyping();
   };
 }
 

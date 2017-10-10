@@ -64,6 +64,7 @@ class ChatWindows extends Component {
 export default ChatWindows;
 
 const WindowsWrapper = styled.div`
+  overflow: hidden;
   position: absolute;
   display: flex;
   flex-direction: row;
