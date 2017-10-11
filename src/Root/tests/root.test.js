@@ -38,11 +38,40 @@ describe("ChatMain", () => {
   describe("TypeBox", () => {
     it("sends a message when you click on send button", () => {
       let mock = {
-        auth: { uid: "user1" },
-        chats: [{ to: "left", from: "right", text: "foo bar" }]
+        auth: { uid: "user1" }
       };
       let wrapper = injectMock(mock);
-      //TODO:
+      let input = wrapper.find(Input).at(0);
+      // no chat bubbles at first
+      expect(wrapper.find(ChatBubbleWrapper).length).toEqual(0);
+      // type a chat
+      input.simulate("focus");
+      const testMessage = "foo bar baz";
+      input.simulate("change", { target: { value: testMessage } });
+      let button = wrapper.find(Icon).at(0);
+      button.simulate("click");
+      // message should now appear in both chat windows
+      expect(wrapper.find(ChatBubbleWrapper).length).toEqual(2);
+    });
+
+    it("syns all messages with cloud datastore", () => {
+      let mock = {
+        auth: { uid: "user1" }
+      };
+      let wrapper = injectMock(mock);
+      let input = wrapper.find(Input).at(0);
+
+      //type a message
+      input.simulate("focus");
+      const testMessage = "foo bar baz";
+      input.simulate("change", { target: { value: testMessage } });
+      let button = wrapper.find(Icon).at(0);
+      button.simulate("click");
+      let cloudData = fb
+        .database()
+        .ref()
+        .calls()[0][0].text;
+      expect(cloudData === testMessage);
     });
   });
 

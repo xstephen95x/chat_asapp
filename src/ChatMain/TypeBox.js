@@ -19,6 +19,12 @@ class TypeBox extends Component {
       <TypeBoxWrapper>
         <Form>
           <Input
+            onBlur={() => {
+              this.props.toggleFocus(false);
+            }}
+            onFocus={() => {
+              this.props.toggleFocus(true);
+            }}
             value={this.state.buffer}
             onChange={this.handleTextChange}
             onKeyPress={this.detectEnter}
@@ -115,6 +121,7 @@ const TypeBoxWrapper = styled.div`
   position: absolute;
   bottom: 0;
   background: #eceded;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.8);
 `;
 
 const Form = styled.form`

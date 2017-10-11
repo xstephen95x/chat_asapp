@@ -8,8 +8,6 @@ https://chat-asapp-43a5e.firebaseapp.com/chat
 Completed as part of the coding challenge for ASAPP.
 https://www.asapp.com/
 
-TODOS:
-- ADD proptypes...
 
 ## Overview
 Chat Asapp is an exciting place where you get to have a conversation with the most important person you know! (yourself)
@@ -64,8 +62,16 @@ To run all tests, simply run:
 
 For rendering of React Components to the test runner, the Enzyme library is used.
 
+Test coverage is currently low. I have omitted unit tests in the sake of saving time. However, high-level integration tests are located in  `src/Root/tests`
+
 For more, see:
 - https://facebook.github.io/jest/
+
+#### PropTypes and Type Safety
+Typically, any large web-app I would make would include PropTypes to introduce some level of type safety to the component props. However, due to the small scope of this project, I have decided to omit them.
+
+Additionally, for larger scope projects, or projects dealing with a breadth of possible datatypes from the back-end, I would typically also add full type-safety to the app via the Flow library. Due to the relatively low complexity of the scope of this app, I have decided not to add Flow as it has a decent amount of overhead.
+  - https://flow.org/
 
 
 #### Deployment to Staging:

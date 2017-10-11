@@ -11,6 +11,7 @@ const setMock = mocks => {
   data = mocks;
 };
 
+let calls = [];
 const database = () => {
   return {
     ref: path => {
@@ -31,7 +32,9 @@ const database = () => {
           let snapshot = { val: () => data.chats };
           return cb(snapshot);
         },
+        calls: () => calls,
         transaction: cb => {
+          calls.push(cb());
           return cb();
         }
       };

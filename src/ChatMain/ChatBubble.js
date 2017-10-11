@@ -1,15 +1,13 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 
-class ChatBubble extends Component {
-  render() {
-    return (
-      <ChatBubbleWrapper className={this.props.fromSender ? "" : "left"}>
-        {this.props.message}
-      </ChatBubbleWrapper>
-    );
-  }
-}
+const ChatBubble = ({ fromSender, message }) => {
+  return (
+    <ChatBubbleWrapper className={fromSender ? "" : "left"}>
+      {message}
+    </ChatBubbleWrapper>
+  );
+};
 
 export default ChatBubble;
 
@@ -22,7 +20,11 @@ export const ChatBubbleWrapper = styled.div`
   overflow-wrap: break-word;
   border-radius: 10px;
   background: rgba(0, 249, 224, 0.7);
+  transition: all 150ms ease-in-out;
   &.left {
     background: rgba(126, 138, 137, 0.5);
+  }
+  &:hover {
+    box-shadow: 0px 0px 10px 0px black;
   }
 `;
