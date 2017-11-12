@@ -52,6 +52,7 @@ class TypeBox extends Component {
     let offset = text.length - 1;
     let lastChars = text[offset - 1] + text[offset];
 
+    //XXX: Could use regexs
     if (lastChars === ":)") {
       text = text.slice(0, offset - 1).concat("😀");
     } else if (lastChars === ":(") {
